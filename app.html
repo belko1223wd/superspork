@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Uber Ride Order App</title>
+    <style>
+        #map {
+            height: 400px;
+            width: 100%;
+        }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"></script>
+    <script>
+        function initMap(location) {
+            var locations = {
+                'New York': {lat: 40.7128, lng: -74.0060},
+                'California': {lat: 36.7783, lng: -119.4179},
+                'Senegal': {lat: 14.4974, lng: -14.4524}
+            };
+
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 10,
+                center: locations[location]
+            });
+
+            new google.maps.Marker({
+                position: locations[location],
+                map: map
+            });
+        }
+    </script>
+</head>
+<body>
+    <h1>Order an Uber Ride</h1>
+    <button onclick="initMap('New York')">New York</button>
+    <button onclick="initMap('California')">California</button>
+    <button onclick="initMap('Senegal')">Senegal</button>
+
+    <div id="map"></div>
+</body>
+</html>
